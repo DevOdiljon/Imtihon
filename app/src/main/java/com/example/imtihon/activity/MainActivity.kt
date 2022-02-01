@@ -1,4 +1,4 @@
-package com.example.imtihon
+package com.example.imtihon.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,8 +7,7 @@ import com.example.imtihon.adapter.CustomAdapter
 import com.example.imtihon.model.Member
 import kotlinx.android.synthetic.main.activity_main.*
 import android.os.Build
-
-
+import com.example.imtihon.R
 
 
 class MainActivity : AppCompatActivity() {
