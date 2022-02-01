@@ -13,5 +13,6 @@ class MainActivity : AppCompatActivity() {
     }
     fun initViews(){
         var intent = Intent()
+        var str:String
     }
 }
