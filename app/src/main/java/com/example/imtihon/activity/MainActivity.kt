@@ -1,5 +1,6 @@
 package com.example.imtihon.activity
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
@@ -7,7 +8,11 @@ import com.example.imtihon.adapter.CustomAdapter
 import com.example.imtihon.model.Member
 import kotlinx.android.synthetic.main.activity_main.*
 import android.os.Build
+import android.telephony.TelephonyManager
+import android.telephony.TelephonyManager.PHONE_TYPE_NONE
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.imtihon.R
+import java.util.Objects.requireNonNull
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,13 +26,15 @@ class MainActivity : AppCompatActivity() {
         refreshAdapter(members)
     }
     fun initViews(){
-        val sdk = Build.VERSION.SDK_INT
-        if (sdk <= Build.VERSION_CODES.ECLAIR) {
-            recyclerView.layoutManager = GridLayoutManager(this, 3)
-        } else {
-            recyclerView.layoutManager = GridLayoutManager(this, 1)
-        }
+        val manager = applicationContext.getSystemService(Context.TELEPHONY_SERVICE)as TelephonyManager
 
+        if (requireNonNull(manager).phoneType === PHONE_TYPE_NONE){
+            recyclerView.layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+        }else{
+            recyclerView.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
+
+
+        }
     }
     fun prepareMember(): ArrayList<Member>{
         var members = ArrayList<Member>()
