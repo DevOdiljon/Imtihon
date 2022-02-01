@@ -29,9 +29,9 @@ class MainActivity : AppCompatActivity() {
         val manager = applicationContext.getSystemService(Context.TELEPHONY_SERVICE)as TelephonyManager
 
         if (requireNonNull(manager).phoneType === PHONE_TYPE_NONE){
-            recyclerView.layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
-        }else{
             recyclerView.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
+        }else{
+            recyclerView.layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
 
 
         }
